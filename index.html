@@ -57,10 +57,28 @@
     .hero h1 em { font-style: italic; color: var(--red); }
     .hero p { color: #9aaccc; font-size: 1rem; line-height: 1.8; margin-bottom: 2.5rem; max-width: 420px; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary { background: var(--red); color: white; padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.92rem; transition: all 0.3s; box-shadow: 0 4px 20px rgba(233,69,96,0.35); }
-    .btn-primary:hover { background: #c73652; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(233,69,96,0.45); }
-    .btn-outline { border: 1.5px solid rgba(255,255,255,0.25); color: white; padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight: 400; font-size: 0.92rem; transition: all 0.3s; }
-    .btn-outline:hover { border-color: var(--red); color: var(--red); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--red), #c73652);
+      color: white; padding: 0.95rem 2.5rem; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 0.92rem;
+      transition: all 0.3s; letter-spacing: 0.5px;
+      box-shadow: 0 4px 25px rgba(233,69,96,0.45);
+      border: 2px solid transparent;
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::after {
+      content: ' →'; font-size: 1rem; transition: margin-left 0.3s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(233,69,96,0.55); }
+    .btn-primary:hover::after { margin-left: 4px; }
+    .btn-outline {
+      border: 2px solid var(--gold); color: var(--gold);
+      padding: 0.95rem 2.5rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600; font-size: 0.92rem;
+      transition: all 0.3s; letter-spacing: 0.5px;
+      background: rgba(201,168,76,0.05);
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--dark); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(201,168,76,0.3); }
 
     /* HERO WATCH SHOWCASE */
     .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; }
@@ -254,11 +272,12 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-tag">✦ New Collection 2025</div>
-    <h1>Wear Time,<br/><em>Wear Style</em></h1>
-    <p>Discover our handcrafted luxury timepieces — where precision meets elegance. Built to last, designed to impress.</p>
+    <!-- UPDATED HEADING: Changed from "Wear Time, Wear Style" to "Discover the Art of Perfect Time" -->
+    <h1>Discover the Art of<br/><em>Perfect Time</em></h1>
+    <p>Each WatchZone timepiece is a masterpiece of Swiss-inspired engineering — meticulously crafted for those who value precision, luxury, and timeless style. Your wrist deserves nothing less.</p>
     <div class="hero-btns">
-      <a href="#shop" class="btn-primary">Shop Now</a>
-      <a href="#why" class="btn-outline">Learn More</a>
+      <a href="#shop" class="btn-primary">Explore Collection</a>
+      <a href="#why" class="btn-outline">Our Story</a>
     </div>
   </div>
   <div class="hero-visual">
