@@ -3,343 +3,505 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TEMPUS — Luxury Timepieces</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <title>WatchZone — Luxury Timepieces</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --red: #e94560;
+      --dark: #1a1a2e;
+      --dark2: #16213e;
+      --gold: #c9a84c;
+      --light: #f8f9fa;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: var(--light); color: #333; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--dark);
+      padding: 1.1rem 6%;
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .logo { color: var(--red); font-size: 1.6rem; font-weight: 700; letter-spacing: 1px; }
+    .logo span { color: white; }
+    .nav-links a { color: #bbb; text-decoration: none; margin-left: 2rem; font-size: 0.88rem; font-weight: 400; transition: color 0.3s; letter-spacing: 0.5px; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-cart { background: var(--red); color: white; border: none; padding: 0.5rem 1.2rem; border-radius: 20px; font-family: 'Poppins', sans-serif; font-size: 0.85rem; cursor: pointer; font-weight: 500; transition: background 0.3s; }
+    .nav-cart:hover { background: #c73652; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 60%, #0f1f3d 100%);
+      color: white; padding: 7rem 6% 5rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(233,69,96,0.08), transparent);
+      right: -100px; top: -100px;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(233,69,96,0.15);
+      border: 1px solid rgba(233,69,96,0.3);
+      color: var(--red); font-size: 0.75rem;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 0.4rem 1rem; border-radius: 20px; margin-bottom: 1.5rem;
+    }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.15; margin-bottom: 1.2rem; }
+    .hero h1 em { font-style: italic; color: var(--red); }
+    .hero p { color: #9aaccc; font-size: 1rem; line-height: 1.8; margin-bottom: 2.5rem; max-width: 420px; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--red); color: white; padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.92rem; transition: all 0.3s; box-shadow: 0 4px 20px rgba(233,69,96,0.35); }
+    .btn-primary:hover { background: #c73652; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(233,69,96,0.45); }
+    .btn-outline { border: 1.5px solid rgba(255,255,255,0.25); color: white; padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight: 400; font-size: 0.92rem; transition: all 0.3s; }
+    .btn-outline:hover { border-color: var(--red); color: var(--red); }
+
+    /* HERO WATCH SHOWCASE */
+    .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; }
+    .hero-ring {
+      width: 300px; height: 300px; border-radius: 50%;
+      border: 1px solid rgba(233,69,96,0.2);
+      display: flex; align-items: center; justify-content: center;
+      animation: spin-slow 20s linear infinite;
+      position: relative;
+    }
+    .hero-ring::before {
+      content: ''; position: absolute;
+      width: 240px; height: 240px; border-radius: 50%;
+      border: 1px dashed rgba(201,168,76,0.2);
+    }
+    @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--dark); color: white;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      text-align: center; padding: 2rem 6%;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .stat-item { padding: 0.5rem; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--red); }
+    .stat-lbl { font-size: 0.75rem; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-top: 0.25rem; }
+
+    /* ── SECTION ── */
+    .section { padding: 5rem 6%; }
+    .section-head { text-align: center; margin-bottom: 3.5rem; }
+    .section-tag { font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--red); font-weight: 500; margin-bottom: 0.5rem; display: block; }
+    .section-head h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--dark); }
+    .section-head p { color: #999; font-size: 0.92rem; margin-top: 0.5rem; }
+
+    /* ── FILTER TABS ── */
+    .filters { display: flex; justify-content: center; gap: 0.6rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .ftab { background: white; border: 1.5px solid #e0e0e0; color: #666; padding: 0.5rem 1.5rem; border-radius: 25px; font-family: 'Poppins', sans-serif; font-size: 0.82rem; cursor: pointer; transition: all 0.3s; font-weight: 500; }
+    .ftab:hover, .ftab.active { background: var(--dark); border-color: var(--dark); color: white; }
+
+    /* ── GRID ── */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.8rem; }
+
+    /* ── CARD ── */
+    .card {
+      background: white; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+      transition: transform 0.35s, box-shadow 0.35s;
+      position: relative;
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.14); }
+    .card.hidden { display: none; }
+
+    .card-img {
+      height: 230px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+
+    /* ── CSS WATCH ── */
+    .watch { width: 130px; height: 160px; position: relative; display: flex; flex-direction: column; align-items: center; transition: transform 0.4s; }
+    .card:hover .watch { transform: scale(1.08) rotate(3deg); }
+    .strap { width: 24px; border-radius: 4px; }
+    .strap-t { height: 30px; }
+    .strap-b { height: 30px; }
+    .watch-body {
+      width: 100px; height: 100px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .watch-face {
+      width: 76px; height: 76px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hand { position: absolute; bottom: 50%; left: 50%; border-radius: 3px; transform-origin: bottom center; }
+    .hh { width: 3px; height: 24px; margin-left:-1.5px; }
+    .mh { width: 2px; height: 32px; margin-left:-1px; transform:rotate(110deg); }
+    .sh { width: 1.5px; height: 36px; margin-left:-0.75px; background:#e94560 !important; transform:rotate(210deg); }
+    .cdot { width:6px; height:6px; border-radius:50%; position:absolute; z-index:5; }
+
+    /* Watch color themes */
+    .w-black .strap { background: #2a2a2a; }
+    .w-black .watch-body { background: linear-gradient(145deg,#3a3a3a,#111); border: 7px solid #444; box-shadow:0 0 20px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.1); }
+    .w-black .watch-face { background: radial-gradient(circle,#1c1c1c,#050505); }
+    .w-black .hh,.w-black .mh,.w-black .cdot { background:#ddd; }
+    .bg-black { background: linear-gradient(160deg,#111,#222); }
+
+    .w-gold .strap { background: #7a5c10; }
+    .w-gold .watch-body { background: linear-gradient(145deg,#d4a843,#a07a20); border:7px solid #c9a84c; box-shadow:0 0 20px rgba(201,168,76,0.4); }
+    .w-gold .watch-face { background: radial-gradient(circle,#fff9e6,#faeec0); }
+    .w-gold .hh,.w-gold .mh,.w-gold .cdot { background:#5a3e00; }
+    .bg-gold { background: linear-gradient(160deg,#1a1200,#2a2000); }
+
+    .w-blue .strap { background: #0a2050; }
+    .w-blue .watch-body { background: linear-gradient(145deg,#1e4a9a,#0d2a60); border:7px solid #2a5ab0; box-shadow:0 0 20px rgba(42,90,176,0.5); }
+    .w-blue .watch-face { background: radial-gradient(circle,#0a1a40,#040d20); }
+    .w-blue .hh,.w-blue .mh,.w-blue .cdot { background:#80b0ff; }
+    .bg-blue { background: linear-gradient(160deg,#020a1a,#040d25); }
+
+    .w-silver .strap { background: #777; }
+    .w-silver .watch-body { background: linear-gradient(145deg,#d8d8d8,#a0a0a0); border:7px solid #c0c0c0; box-shadow:0 0 20px rgba(180,180,180,0.3); }
+    .w-silver .watch-face { background: radial-gradient(circle,#f5f5f5,#e0e0e0); }
+    .w-silver .hh,.w-silver .mh,.w-silver .cdot { background:#222; }
+    .bg-silver { background: linear-gradient(160deg,#e8e8e8,#d0d0d0); }
+
+    .w-green .strap { background: #0a2c15; }
+    .w-green .watch-body { background: linear-gradient(145deg,#1e6035,#0a3018); border:7px solid #2a7a40; box-shadow:0 0 20px rgba(42,122,64,0.4); }
+    .w-green .watch-face { background: radial-gradient(circle,#081a0c,#030a05); }
+    .w-green .hh,.w-green .mh,.w-green .cdot { background:#60d080; }
+    .bg-green { background: linear-gradient(160deg,#020a04,#030e06); }
+
+    .w-rose .strap { background: #5a1530; }
+    .w-rose .watch-body { background: linear-gradient(145deg,#c96080,#8a2a45); border:7px solid #d47090; box-shadow:0 0 20px rgba(201,96,128,0.4); }
+    .w-rose .watch-face { background: radial-gradient(circle,#180510,#0a0208); }
+    .w-rose .hh,.w-rose .mh,.w-rose .cdot { background:#f0a8c0; }
+    .bg-rose { background: linear-gradient(160deg,#100208,#180310); }
+
+    .badge { position:absolute; top:14px; left:14px; color:white; font-size:0.68rem; font-weight:600; padding:0.28rem 0.75rem; border-radius:20px; letter-spacing:0.5px; }
+
+    .card-body { padding: 1.4rem; }
+    .card-meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem; }
+    .card-series { font-size:0.7rem; color:var(--red); font-weight:600; letter-spacing:1px; text-transform:uppercase; }
+    .card-rating { color:#f5c518; font-size:0.75rem; }
+    .card-body h3 { font-size:1.05rem; font-weight:600; margin-bottom:0.3rem; }
+    .card-body p { font-size:0.82rem; color:#999; margin-bottom:1.2rem; line-height:1.5; }
+    .card-footer { display:flex; justify-content:space-between; align-items:center; }
+    .price { font-size:1.2rem; font-weight:700; color:var(--dark); }
+    .price-old { font-size:0.8rem; color:#bbb; text-decoration:line-through; margin-left:4px; }
+    .add-btn { background:var(--dark); color:white; border:none; padding:0.55rem 1.2rem; border-radius:25px; font-size:0.8rem; font-weight:500; cursor:pointer; transition:all 0.3s; font-family:'Poppins',sans-serif; }
+    .add-btn:hover { background:var(--red); transform:scale(1.05); }
+
+    /* ── FEATURES ── */
+    .features { background: var(--dark); padding: 5rem 6%; }
+    .features .section-head h2 { color: white; }
+    .features .section-head p { color: #666; }
+    .feat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; }
+    .feat-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:2rem 1.5rem; text-align:center; transition:border-color 0.3s,transform 0.3s; }
+    .feat-card:hover { border-color:rgba(233,69,96,0.4); transform:translateY(-4px); }
+    .feat-icon { font-size:2.2rem; margin-bottom:1rem; }
+    .feat-card h3 { color:white; font-size:0.95rem; font-weight:600; margin-bottom:0.5rem; }
+    .feat-card p { color:#666; font-size:0.82rem; line-height:1.6; }
+
+    /* ── NEWSLETTER ── */
+    .newsletter { background: linear-gradient(135deg,var(--red),#c73652); padding:4rem 6%; text-align:center; color:white; }
+    .newsletter h2 { font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:0.75rem; }
+    .newsletter p { opacity:0.85; margin-bottom:2rem; font-size:0.95rem; }
+    .nl-form { display:flex; max-width:440px; margin:0 auto; gap:0; }
+    .nl-form input { flex:1; padding:0.9rem 1.2rem; border:none; outline:none; font-family:'Poppins',sans-serif; font-size:0.9rem; border-radius:50px 0 0 50px; }
+    .nl-form button { background:var(--dark); color:white; border:none; padding:0.9rem 1.5rem; border-radius:0 50px 50px 0; font-family:'Poppins',sans-serif; font-size:0.85rem; font-weight:600; cursor:pointer; transition:background 0.3s; }
+    .nl-form button:hover { background:#0a0a1a; }
+
+    /* ── FOOTER ── */
+    footer { background:#0d0d1a; color:#666; padding:2rem 6%; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.83rem; }
+    .foot-logo { color:var(--red); font-weight:700; font-size:1.1rem; }
+    .foot-links a { color:#555; text-decoration:none; margin-left:1.5rem; transition:color 0.3s; font-size:0.82rem; }
+    .foot-links a:hover { color:var(--red); }
+
+    /* ── TOAST ── */
+    .toast { position:fixed; bottom:2rem; right:2rem; background:var(--dark); color:white; padding:1rem 1.5rem; border-radius:12px; font-size:0.88rem; transform:translateY(100px); opacity:0; transition:all 0.4s; z-index:999; border-left:4px solid var(--red); }
+    .toast.show { transform:translateY(0); opacity:1; }
+
+    @media(max-width:768px) {
+      .hero { grid-template-columns:1fr; padding:5rem 5% 3rem; }
+      .hero-visual { display:none; }
+      .stats-bar { grid-template-columns:repeat(2,1fr); }
+      nav .nav-links { display:none; }
+      footer { flex-direction:column; text-align:center; }
+      .foot-links a { margin:0 0.75rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- CURSOR -->
-  <div class="cursor"></div>
-  <div class="cursor-follower"></div>
+<!-- TOAST -->
+<div class="toast" id="toast">⌚ Added to cart!</div>
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <div class="nav-left">
-      <a href="#" class="nav-link">Collections</a>
-      <a href="#" class="nav-link">Heritage</a>
-    </div>
-    <div class="logo">TEMPUS</div>
-    <div class="nav-right">
-      <a href="#" class="nav-link">Boutiques</a>
-      <a href="#" class="nav-link cart-link">Cart <span class="cart-count">0</span></a>
-    </div>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="logo">⌚ Watch<span>Zone</span></div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#shop">Collection</a>
+    <a href="#why">About</a>
+    <a href="#">Contact</a>
+  </div>
+  <button class="nav-cart" id="cartBtn">🛒 Cart (<span id="cartNum">0</span>)</button>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg">
-      <div class="watch-dial">
-        <div class="dial-ring r1"></div>
-        <div class="dial-ring r2"></div>
-        <div class="dial-ring r3"></div>
-        <div class="dial-center"></div>
-        <div class="hand hour-hand"></div>
-        <div class="hand minute-hand"></div>
-        <div class="hand second-hand"></div>
-        <div class="dial-markers">
-          <span class="marker m12">XII</span>
-          <span class="marker m3">III</span>
-          <span class="marker m6">VI</span>
-          <span class="marker m9">IX</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-content">
-      <p class="hero-tag">Since 1887 · Swiss Made</p>
-      <h1 class="hero-title">
-        <span class="line">Time Is</span>
-        <span class="line italic">The Only</span>
-        <span class="line">Luxury</span>
-      </h1>
-      <p class="hero-desc">Handcrafted Swiss timepieces for those who understand that precision is the highest form of art.</p>
-      <div class="hero-cta">
-        <a href="#collection" class="btn-gold">Explore Collection</a>
-        <a href="#" class="btn-ghost">Watch Film ▶</a>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- MARQUEE -->
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span>Swiss Made</span><span>·</span>
-      <span>Handcrafted Excellence</span><span>·</span>
-      <span>Precision Engineering</span><span>·</span>
-      <span>Timeless Design</span><span>·</span>
-      <span>Since 1887</span><span>·</span>
-      <span>Swiss Made</span><span>·</span>
-      <span>Handcrafted Excellence</span><span>·</span>
-      <span>Precision Engineering</span><span>·</span>
-      <span>Timeless Design</span><span>·</span>
-      <span>Since 1887</span><span>·</span>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-tag">✦ New Collection 2025</div>
+    <h1>Wear Time,<br/><em>Wear Style</em></h1>
+    <p>Discover our handcrafted luxury timepieces — where precision meets elegance. Built to last, designed to impress.</p>
+    <div class="hero-btns">
+      <a href="#shop" class="btn-primary">Shop Now</a>
+      <a href="#why" class="btn-outline">Learn More</a>
     </div>
   </div>
-
-  <!-- COLLECTION -->
-  <section id="collection" class="collection">
-    <div class="section-header">
-      <p class="section-tag">The Collection</p>
-      <h2>Masterpieces of Time</h2>
-      <p class="section-sub">Each watch is a testament to over a century of horological mastery</p>
-    </div>
-
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="classic">Classic</button>
-      <button class="filter-btn" data-filter="sport">Sport</button>
-      <button class="filter-btn" data-filter="limited">Limited</button>
-    </div>
-
-    <div class="products-grid">
-
-      <div class="product-card" data-category="classic">
-        <div class="product-image">
-          <div class="watch-preview gold">
-            <div class="wp-ring"></div>
-            <div class="wp-face">
-              <div class="wp-h"></div>
-              <div class="wp-m"></div>
-            </div>
-          </div>
-          <div class="product-overlay">
-            <button class="quick-add" data-name="Meridian I" data-price="4200">Add to Cart</button>
-          </div>
-          <div class="product-badge">Bestseller</div>
-        </div>
-        <div class="product-info">
-          <p class="product-collection">Classic Series</p>
-          <h3 class="product-name">Meridian I</h3>
-          <p class="product-desc">18k rose gold case · Sapphire crystal · 42h power reserve</p>
-          <div class="product-footer">
-            <span class="product-price">$4,200</span>
-            <div class="color-dots">
-              <span class="cdot gold-c active"></span>
-              <span class="cdot silver-c"></span>
-              <span class="cdot black-c"></span>
-            </div>
+  <div class="hero-visual">
+    <div class="hero-ring">
+      <div class="watch w-gold" style="transform:none;">
+        <div class="strap strap-t" style="background:#7a5c10;"></div>
+        <div class="watch-body">
+          <div class="watch-face">
+            <div class="hand hh" id="hero-hh"></div>
+            <div class="hand mh" id="hero-mh"></div>
+            <div class="hand sh" id="hero-sh"></div>
+            <div class="cdot" style="background:#5a3e00;"></div>
           </div>
         </div>
+        <div class="strap strap-b" style="background:#7a5c10;"></div>
       </div>
-
-      <div class="product-card" data-category="sport">
-        <div class="product-image">
-          <div class="watch-preview black">
-            <div class="wp-ring"></div>
-            <div class="wp-face">
-              <div class="wp-h"></div>
-              <div class="wp-m"></div>
-            </div>
-          </div>
-          <div class="product-overlay">
-            <button class="quick-add" data-name="Nautilus Pro" data-price="6800">Add to Cart</button>
-          </div>
-          <div class="product-badge sport-badge">Sport</div>
-        </div>
-        <div class="product-info">
-          <p class="product-collection">Sport Series</p>
-          <h3 class="product-name">Nautilus Pro</h3>
-          <p class="product-desc">Titanium case · 300m water resist · Chronograph</p>
-          <div class="product-footer">
-            <span class="product-price">$6,800</span>
-            <div class="color-dots">
-              <span class="cdot black-c active"></span>
-              <span class="cdot blue-c"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="limited">
-        <div class="product-image">
-          <div class="watch-preview silver">
-            <div class="wp-ring"></div>
-            <div class="wp-face">
-              <div class="wp-h"></div>
-              <div class="wp-m"></div>
-            </div>
-          </div>
-          <div class="product-overlay">
-            <button class="quick-add" data-name="Celestial No.7" data-price="12500">Add to Cart</button>
-          </div>
-          <div class="product-badge limited-badge">Limited</div>
-        </div>
-        <div class="product-info">
-          <p class="product-collection">Limited Edition</p>
-          <h3 class="product-name">Celestial No.7</h3>
-          <p class="product-desc">Platinum case · Moon phase · Only 88 pieces</p>
-          <div class="product-footer">
-            <span class="product-price">$12,500</span>
-            <div class="color-dots">
-              <span class="cdot silver-c active"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="classic">
-        <div class="product-image">
-          <div class="watch-preview blue">
-            <div class="wp-ring"></div>
-            <div class="wp-face">
-              <div class="wp-h"></div>
-              <div class="wp-m"></div>
-            </div>
-          </div>
-          <div class="product-overlay">
-            <button class="quick-add" data-name="Élégance Bleue" data-price="3600">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-info">
-          <p class="product-collection">Classic Series</p>
-          <h3 class="product-name">Élégance Bleue</h3>
-          <p class="product-desc">Stainless steel · Blue lacquer dial · Date window</p>
-          <div class="product-footer">
-            <span class="product-price">$3,600</span>
-            <div class="color-dots">
-              <span class="cdot blue-c active"></span>
-              <span class="cdot silver-c"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="sport">
-        <div class="product-image">
-          <div class="watch-preview dark-green">
-            <div class="wp-ring"></div>
-            <div class="wp-face">
-              <div class="wp-h"></div>
-              <div class="wp-m"></div>
-            </div>
-          </div>
-          <div class="product-overlay">
-            <button class="quick-add" data-name="Terra GMT" data-price="5400">Add to Cart</button>
-          </div>
-          <div class="product-badge sport-badge">New</div>
-        </div>
-        <div class="product-info">
-          <p class="product-collection">Sport Series</p>
-          <h3 class="product-name">Terra GMT</h3>
-          <p class="product-desc">GMT function · Ceramic bezel · Dual timezone</p>
-          <div class="product-footer">
-            <span class="product-price">$5,400</span>
-            <div class="color-dots">
-              <span class="cdot dark-green-c active"></span>
-              <span class="cdot black-c"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="limited">
-        <div class="product-image">
-          <div class="watch-preview rose">
-            <div class="wp-ring"></div>
-            <div class="wp-face">
-              <div class="wp-h"></div>
-              <div class="wp-m"></div>
-            </div>
-          </div>
-          <div class="product-overlay">
-            <button class="quick-add" data-name="Aurora Tourbillon" data-price="28000">Add to Cart</button>
-          </div>
-          <div class="product-badge limited-badge">Rare</div>
-        </div>
-        <div class="product-info">
-          <p class="product-collection">Limited Edition</p>
-          <h3 class="product-name">Aurora Tourbillon</h3>
-          <p class="product-desc">Flying tourbillon · Skeleton dial · 30 pieces only</p>
-          <div class="product-footer">
-            <span class="product-price">$28,000</span>
-            <div class="color-dots">
-              <span class="cdot rose-c active"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CART SIDEBAR -->
-  <div class="cart-overlay" id="cartOverlay"></div>
-  <div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-      <h3>Your Selection</h3>
-      <button class="cart-close" id="cartClose">✕</button>
-    </div>
-    <div class="cart-items" id="cartItems">
-      <div class="cart-empty">
-        <div class="empty-icon">⌚</div>
-        <p>Your collection is empty</p>
-        <span>Add a timepiece to begin</span>
-      </div>
-    </div>
-    <div class="cart-footer" id="cartFooter" style="display:none">
-      <div class="cart-total">
-        <span>Total</span>
-        <span id="cartTotal">$0</span>
-      </div>
-      <button class="checkout-btn">Proceed to Checkout</button>
     </div>
   </div>
+</section>
 
-  <!-- HERITAGE STRIP -->
-  <section class="heritage">
-    <div class="heritage-content">
-      <div class="heritage-text">
-        <p class="section-tag">Our Heritage</p>
-        <h2>135 Years of<br/><em>Horological Mastery</em></h2>
-        <p>Founded in 1887 in the Vallée de Joux, Switzerland, TEMPUS has been crafting exceptional timepieces that combine traditional Swiss watchmaking with contemporary design philosophy.</p>
-        <a href="#" class="btn-gold" style="margin-top:2rem;display:inline-block">Discover Our Story</a>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">12K+</div><div class="stat-lbl">Happy Customers</div></div>
+  <div class="stat-item"><div class="stat-num">48</div><div class="stat-lbl">Watch Models</div></div>
+  <div class="stat-item"><div class="stat-num">135</div><div class="stat-lbl">Years Heritage</div></div>
+  <div class="stat-item"><div class="stat-num">94</div><div class="stat-lbl">Countries</div></div>
+</div>
+
+<!-- SHOP -->
+<section class="section" id="shop">
+  <div class="section-head">
+    <span class="section-tag">✦ Our Collection</span>
+    <h2>Timepieces for Every Occasion</h2>
+    <p>From classic to sport — find the one that speaks to you</p>
+  </div>
+
+  <div class="filters">
+    <button class="ftab active" data-f="all">All Watches</button>
+    <button class="ftab" data-f="classic">Classic</button>
+    <button class="ftab" data-f="sport">Sport</button>
+    <button class="ftab" data-f="limited">Limited</button>
+  </div>
+
+  <div class="grid">
+
+    <div class="card" data-cat="classic">
+      <div class="card-img bg-black">
+        <div class="watch w-black">
+          <div class="strap strap-t"></div>
+          <div class="watch-body"><div class="watch-face">
+            <div class="hand hh"></div><div class="hand mh"></div><div class="hand sh"></div><div class="cdot"></div>
+          </div></div>
+          <div class="strap strap-b"></div>
+        </div>
+        <span class="badge" style="background:#e94560;">Bestseller</span>
       </div>
-      <div class="heritage-stats">
-        <div class="hstat"><span class="hnum">135+</span><span class="hlbl">Years of Excellence</span></div>
-        <div class="hstat"><span class="hnum">48</span><span class="hlbl">Master Watchmakers</span></div>
-        <div class="hstat"><span class="hnum">312</span><span class="hlbl">Components Per Watch</span></div>
-        <div class="hstat"><span class="hnum">94</span><span class="hlbl">Countries Worldwide</span></div>
+      <div class="card-body">
+        <div class="card-meta"><span class="card-series">Classic Series</span><span class="card-rating">★★★★★</span></div>
+        <h3>Midnight Black</h3>
+        <p>Timeless elegance for the modern professional</p>
+        <div class="card-footer"><span class="price">$120 <span class="price-old">$160</span></span><button class="add-btn" data-name="Midnight Black">Add to Cart</button></div>
       </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">TEMPUS</div>
-        <p>Crafting time since 1887.<br/>Swiss Made · Geneva Seal</p>
+    <div class="card" data-cat="classic">
+      <div class="card-img bg-gold">
+        <div class="watch w-gold">
+          <div class="strap strap-t"></div>
+          <div class="watch-body"><div class="watch-face">
+            <div class="hand hh"></div><div class="hand mh"></div><div class="hand sh"></div><div class="cdot"></div>
+          </div></div>
+          <div class="strap strap-b"></div>
+        </div>
+        <span class="badge" style="background:#c9a84c;">Luxury</span>
       </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <h4>Collections</h4>
-          <a href="#">Classic Series</a>
-          <a href="#">Sport Series</a>
-          <a href="#">Limited Edition</a>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="#">Heritage</a>
-          <a href="#">Craftsmanship</a>
-          <a href="#">Boutiques</a>
-        </div>
-        <div class="footer-col">
-          <h4>Support</h4>
-          <a href="#">Service & Repair</a>
-          <a href="#">Authentication</a>
-          <a href="#">Contact</a>
-        </div>
+      <div class="card-body">
+        <div class="card-meta"><span class="card-series">Classic Series</span><span class="card-rating">★★★★★</span></div>
+        <h3>Imperial Gold</h3>
+        <p>Luxurious 18k gold finish for special occasions</p>
+        <div class="card-footer"><span class="price">$185</span><button class="add-btn" data-name="Imperial Gold">Add to Cart</button></div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 TEMPUS SA. All rights reserved. Geneva, Switzerland.</p>
-    </div>
-  </footer>
 
-  <script src="script.js"></script>
+    <div class="card" data-cat="sport">
+      <div class="card-img bg-blue">
+        <div class="watch w-blue">
+          <div class="strap strap-t"></div>
+          <div class="watch-body"><div class="watch-face">
+            <div class="hand hh"></div><div class="hand mh"></div><div class="hand sh"></div><div class="cdot"></div>
+          </div></div>
+          <div class="strap strap-b"></div>
+        </div>
+        <span class="badge" style="background:#0066cc;">Sport</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span class="card-series">Sport Series</span><span class="card-rating">★★★★☆</span></div>
+        <h3>Ocean Blue</h3>
+        <p>300m water resistant · Built for adventure</p>
+        <div class="card-footer"><span class="price">$95 <span class="price-old">$130</span></span><button class="add-btn" data-name="Ocean Blue">Add to Cart</button></div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="classic">
+      <div class="card-img bg-silver">
+        <div class="watch w-silver">
+          <div class="strap strap-t"></div>
+          <div class="watch-body"><div class="watch-face">
+            <div class="hand hh"></div><div class="hand mh"></div><div class="hand sh"></div><div class="cdot"></div>
+          </div></div>
+          <div class="strap strap-b"></div>
+        </div>
+        <span class="badge" style="background:#555;">Minimal</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span class="card-series">Classic Series</span><span class="card-rating">★★★★★</span></div>
+        <h3>Pure Silver</h3>
+        <p>Minimalist design that goes with everything</p>
+        <div class="card-footer"><span class="price">$89</span><button class="add-btn" data-name="Pure Silver">Add to Cart</button></div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="sport">
+      <div class="card-img bg-green">
+        <div class="watch w-green">
+          <div class="strap strap-t"></div>
+          <div class="watch-body"><div class="watch-face">
+            <div class="hand hh"></div><div class="hand mh"></div><div class="hand sh"></div><div class="cdot"></div>
+          </div></div>
+          <div class="strap strap-b"></div>
+        </div>
+        <span class="badge" style="background:#2d7a45;">New 2025</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span class="card-series">Sport Series</span><span class="card-rating">★★★★★</span></div>
+        <h3>Forest Green</h3>
+        <p>Ceramic bezel · GMT function · Dual timezone</p>
+        <div class="card-footer"><span class="price">$210</span><button class="add-btn" data-name="Forest Green">Add to Cart</button></div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="limited">
+      <div class="card-img bg-rose">
+        <div class="watch w-rose">
+          <div class="strap strap-t"></div>
+          <div class="watch-body"><div class="watch-face">
+            <div class="hand hh"></div><div class="hand mh"></div><div class="hand sh"></div><div class="cdot"></div>
+          </div></div>
+          <div class="strap strap-b"></div>
+        </div>
+        <span class="badge" style="background:#c9708c;">Only 50 Left</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span class="card-series">Limited Edition</span><span class="card-rating">★★★★★</span></div>
+        <h3>Rose Edition</h3>
+        <p>Limited release · Skeleton dial · Collector's piece</p>
+        <div class="card-footer"><span class="price">$155</span><button class="add-btn" data-name="Rose Edition">Add to Cart</button></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="why">
+  <div class="section-head">
+    <span class="section-tag" style="color:#e94560;">✦ Why WatchZone</span>
+    <h2>Crafted for Excellence</h2>
+    <p style="color:#555;">Every timepiece tells a story</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card"><div class="feat-icon">🚚</div><h3>Free Shipping</h3><p>Free worldwide delivery on all orders above $50</p></div>
+    <div class="feat-card"><div class="feat-icon">✅</div><h3>100% Authentic</h3><p>All watches come with certificate of authenticity</p></div>
+    <div class="feat-card"><div class="feat-icon">🔄</div><h3>30-Day Returns</h3><p>Not happy? Return it hassle-free within 30 days</p></div>
+    <div class="feat-card"><div class="feat-icon">🛡️</div><h3>2 Year Warranty</h3><p>Full manufacturer warranty on every timepiece</p></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2>Stay in the Loop</h2>
+  <p>Get exclusive deals, new arrivals & style tips in your inbox</p>
+  <div class="nl-form">
+    <input type="email" placeholder="Enter your email address..."/>
+    <button onclick="this.textContent='✓ Subscribed!'">Subscribe</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">⌚ WatchZone</div>
+  <span>© 2025 WatchZone. All rights reserved.</span>
+  <div class="foot-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Live clock
+  let cartCount = 0;
+  function updateClocks() {
+    const now = new Date();
+    const h = now.getHours()%12, m = now.getMinutes(), s = now.getSeconds();
+    const hDeg = h*30 + m*0.5, mDeg = m*6, sDeg = s*6;
+    document.querySelectorAll('.hh').forEach(e => e.style.transform = `rotate(${hDeg}deg)`);
+    document.querySelectorAll('.mh').forEach(e => e.style.transform = `rotate(${mDeg}deg)`);
+    document.querySelectorAll('.sh').forEach(e => e.style.transform = `rotate(${sDeg}deg)`);
+  }
+  updateClocks(); setInterval(updateClocks, 1000);
+
+  // Toast
+  function showToast(name) {
+    const t = document.getElementById('toast');
+    t.textContent = `⌚ "${name}" added to cart!`;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  // Cart
+  document.querySelectorAll('.add-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      cartCount++;
+      document.getElementById('cartNum').textContent = cartCount;
+      const name = this.dataset.name;
+      showToast(name);
+      this.textContent = '✓ Added!';
+      this.style.background = '#28a745';
+      setTimeout(() => { this.textContent = 'Add to Cart'; this.style.background = ''; }, 1800);
+    });
+  });
+
+  // Filters
+  document.querySelectorAll('.ftab').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.ftab').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const f = this.dataset.f;
+      document.querySelectorAll('.card').forEach(c => {
+        c.classList.toggle('hidden', f !== 'all' && c.dataset.cat !== f);
+      });
+    });
+  });
+</script>
 </body>
 </html>
