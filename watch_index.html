@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TEMPUS — Luxury Timepieces</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-left">
+      <a href="#" class="nav-link">Collections</a>
+      <a href="#" class="nav-link">Heritage</a>
+    </div>
+    <div class="logo">TEMPUS</div>
+    <div class="nav-right">
+      <a href="#" class="nav-link">Boutiques</a>
+      <a href="#" class="nav-link cart-link">Cart <span class="cart-count">0</span></a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="watch-dial">
+        <div class="dial-ring r1"></div>
+        <div class="dial-ring r2"></div>
+        <div class="dial-ring r3"></div>
+        <div class="dial-center"></div>
+        <div class="hand hour-hand"></div>
+        <div class="hand minute-hand"></div>
+        <div class="hand second-hand"></div>
+        <div class="dial-markers">
+          <span class="marker m12">XII</span>
+          <span class="marker m3">III</span>
+          <span class="marker m6">VI</span>
+          <span class="marker m9">IX</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tag">Since 1887 · Swiss Made</p>
+      <h1 class="hero-title">
+        <span class="line">Time Is</span>
+        <span class="line italic">The Only</span>
+        <span class="line">Luxury</span>
+      </h1>
+      <p class="hero-desc">Handcrafted Swiss timepieces for those who understand that precision is the highest form of art.</p>
+      <div class="hero-cta">
+        <a href="#collection" class="btn-gold">Explore Collection</a>
+        <a href="#" class="btn-ghost">Watch Film ▶</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Swiss Made</span><span>·</span>
+      <span>Handcrafted Excellence</span><span>·</span>
+      <span>Precision Engineering</span><span>·</span>
+      <span>Timeless Design</span><span>·</span>
+      <span>Since 1887</span><span>·</span>
+      <span>Swiss Made</span><span>·</span>
+      <span>Handcrafted Excellence</span><span>·</span>
+      <span>Precision Engineering</span><span>·</span>
+      <span>Timeless Design</span><span>·</span>
+      <span>Since 1887</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- COLLECTION -->
+  <section id="collection" class="collection">
+    <div class="section-header">
+      <p class="section-tag">The Collection</p>
+      <h2>Masterpieces of Time</h2>
+      <p class="section-sub">Each watch is a testament to over a century of horological mastery</p>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="classic">Classic</button>
+      <button class="filter-btn" data-filter="sport">Sport</button>
+      <button class="filter-btn" data-filter="limited">Limited</button>
+    </div>
+
+    <div class="products-grid">
+
+      <div class="product-card" data-category="classic">
+        <div class="product-image">
+          <div class="watch-preview gold">
+            <div class="wp-ring"></div>
+            <div class="wp-face">
+              <div class="wp-h"></div>
+              <div class="wp-m"></div>
+            </div>
+          </div>
+          <div class="product-overlay">
+            <button class="quick-add" data-name="Meridian I" data-price="4200">Add to Cart</button>
+          </div>
+          <div class="product-badge">Bestseller</div>
+        </div>
+        <div class="product-info">
+          <p class="product-collection">Classic Series</p>
+          <h3 class="product-name">Meridian I</h3>
+          <p class="product-desc">18k rose gold case · Sapphire crystal · 42h power reserve</p>
+          <div class="product-footer">
+            <span class="product-price">$4,200</span>
+            <div class="color-dots">
+              <span class="cdot gold-c active"></span>
+              <span class="cdot silver-c"></span>
+              <span class="cdot black-c"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="sport">
+        <div class="product-image">
+          <div class="watch-preview black">
+            <div class="wp-ring"></div>
+            <div class="wp-face">
+              <div class="wp-h"></div>
+              <div class="wp-m"></div>
+            </div>
+          </div>
+          <div class="product-overlay">
+            <button class="quick-add" data-name="Nautilus Pro" data-price="6800">Add to Cart</button>
+          </div>
+          <div class="product-badge sport-badge">Sport</div>
+        </div>
+        <div class="product-info">
+          <p class="product-collection">Sport Series</p>
+          <h3 class="product-name">Nautilus Pro</h3>
+          <p class="product-desc">Titanium case · 300m water resist · Chronograph</p>
+          <div class="product-footer">
+            <span class="product-price">$6,800</span>
+            <div class="color-dots">
+              <span class="cdot black-c active"></span>
+              <span class="cdot blue-c"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="limited">
+        <div class="product-image">
+          <div class="watch-preview silver">
+            <div class="wp-ring"></div>
+            <div class="wp-face">
+              <div class="wp-h"></div>
+              <div class="wp-m"></div>
+            </div>
+          </div>
+          <div class="product-overlay">
+            <button class="quick-add" data-name="Celestial No.7" data-price="12500">Add to Cart</button>
+          </div>
+          <div class="product-badge limited-badge">Limited</div>
+        </div>
+        <div class="product-info">
+          <p class="product-collection">Limited Edition</p>
+          <h3 class="product-name">Celestial No.7</h3>
+          <p class="product-desc">Platinum case · Moon phase · Only 88 pieces</p>
+          <div class="product-footer">
+            <span class="product-price">$12,500</span>
+            <div class="color-dots">
+              <span class="cdot silver-c active"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="classic">
+        <div class="product-image">
+          <div class="watch-preview blue">
+            <div class="wp-ring"></div>
+            <div class="wp-face">
+              <div class="wp-h"></div>
+              <div class="wp-m"></div>
+            </div>
+          </div>
+          <div class="product-overlay">
+            <button class="quick-add" data-name="Élégance Bleue" data-price="3600">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-collection">Classic Series</p>
+          <h3 class="product-name">Élégance Bleue</h3>
+          <p class="product-desc">Stainless steel · Blue lacquer dial · Date window</p>
+          <div class="product-footer">
+            <span class="product-price">$3,600</span>
+            <div class="color-dots">
+              <span class="cdot blue-c active"></span>
+              <span class="cdot silver-c"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="sport">
+        <div class="product-image">
+          <div class="watch-preview dark-green">
+            <div class="wp-ring"></div>
+            <div class="wp-face">
+              <div class="wp-h"></div>
+              <div class="wp-m"></div>
+            </div>
+          </div>
+          <div class="product-overlay">
+            <button class="quick-add" data-name="Terra GMT" data-price="5400">Add to Cart</button>
+          </div>
+          <div class="product-badge sport-badge">New</div>
+        </div>
+        <div class="product-info">
+          <p class="product-collection">Sport Series</p>
+          <h3 class="product-name">Terra GMT</h3>
+          <p class="product-desc">GMT function · Ceramic bezel · Dual timezone</p>
+          <div class="product-footer">
+            <span class="product-price">$5,400</span>
+            <div class="color-dots">
+              <span class="cdot dark-green-c active"></span>
+              <span class="cdot black-c"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="limited">
+        <div class="product-image">
+          <div class="watch-preview rose">
+            <div class="wp-ring"></div>
+            <div class="wp-face">
+              <div class="wp-h"></div>
+              <div class="wp-m"></div>
+            </div>
+          </div>
+          <div class="product-overlay">
+            <button class="quick-add" data-name="Aurora Tourbillon" data-price="28000">Add to Cart</button>
+          </div>
+          <div class="product-badge limited-badge">Rare</div>
+        </div>
+        <div class="product-info">
+          <p class="product-collection">Limited Edition</p>
+          <h3 class="product-name">Aurora Tourbillon</h3>
+          <p class="product-desc">Flying tourbillon · Skeleton dial · 30 pieces only</p>
+          <div class="product-footer">
+            <span class="product-price">$28,000</span>
+            <div class="color-dots">
+              <span class="cdot rose-c active"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Selection</h3>
+      <button class="cart-close" id="cartClose">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <div class="empty-icon">⌚</div>
+        <p>Your collection is empty</p>
+        <span>Add a timepiece to begin</span>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">$0</span>
+      </div>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- HERITAGE STRIP -->
+  <section class="heritage">
+    <div class="heritage-content">
+      <div class="heritage-text">
+        <p class="section-tag">Our Heritage</p>
+        <h2>135 Years of<br/><em>Horological Mastery</em></h2>
+        <p>Founded in 1887 in the Vallée de Joux, Switzerland, TEMPUS has been crafting exceptional timepieces that combine traditional Swiss watchmaking with contemporary design philosophy.</p>
+        <a href="#" class="btn-gold" style="margin-top:2rem;display:inline-block">Discover Our Story</a>
+      </div>
+      <div class="heritage-stats">
+        <div class="hstat"><span class="hnum">135+</span><span class="hlbl">Years of Excellence</span></div>
+        <div class="hstat"><span class="hnum">48</span><span class="hlbl">Master Watchmakers</span></div>
+        <div class="hstat"><span class="hnum">312</span><span class="hlbl">Components Per Watch</span></div>
+        <div class="hstat"><span class="hnum">94</span><span class="hlbl">Countries Worldwide</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">TEMPUS</div>
+        <p>Crafting time since 1887.<br/>Swiss Made · Geneva Seal</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <a href="#">Classic Series</a>
+          <a href="#">Sport Series</a>
+          <a href="#">Limited Edition</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">Heritage</a>
+          <a href="#">Craftsmanship</a>
+          <a href="#">Boutiques</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Service & Repair</a>
+          <a href="#">Authentication</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 TEMPUS SA. All rights reserved. Geneva, Switzerland.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
